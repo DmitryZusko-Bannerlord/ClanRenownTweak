@@ -6,15 +6,6 @@ namespace ClanRenounTweak.MCM
 {
     class Settings : AttributePerCampaignSettings<Settings>
     {
-        private static Settings _instance;
-        public static Settings Instance
-        {
-            get
-            {
-                return _instance ?? (_instance = new Settings());
-            }
-        }
-
         public override string Id => "ClanRenounTweak";
 
         public override string DisplayName => "Clan Renoun Tweak";
