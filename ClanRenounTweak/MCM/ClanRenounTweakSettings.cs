@@ -15,10 +15,16 @@ namespace ClanRenounTweak.MCM
 
         public override string DisplayName => "Clan Renoun Tweak";
 
-        [SettingPropertyFloatingInteger("Player renoun gain multiplier", 0.001f, 1000, "0%",
-            HintText = "Multiplying coef for player renoun gains (def = 100%)", RequireRestart = false, Order = 1)]
+        [SettingPropertyFloatingInteger("Renoun gain multiplier", 0.001f, 1000, "0%",
+            HintText = "Multiplying coef for renoun gains from all sources (def = 100%)", RequireRestart = false, Order = 10)]
         [SettingPropertyGroup("Renoun gain multiplier", GroupOrder = 1)]
-        public float PlayerRenounMultiplier { get; set; } = 1;
+        public float RenounMultiplier { get; set; } = 1;
+
+        [SettingPropertyBool("Apply to non-player characters",
+            HintText = "If checked, this multiplier also will be applied to all future renown gains of non-player characters",
+            RequireRestart = false, Order = 20)]
+        [SettingPropertyGroup("Renoun gain multiplier", GroupOrder = 1)]
+        public bool IsApplyRenounMultiplierToNonPlayer { get; set; } = false;
 
         [SettingPropertyInteger("1 tier renoun", 1, 1000000, "0",
             HintText = "Amount of renoun to be aquired to reach clan tier level 1 (def = 50)", RequireRestart = false, Order = 100)]
@@ -119,7 +125,7 @@ namespace ClanRenounTweak.MCM
         [SettingPropertyBool("Apply to non-player clans",
             HintText = "If checked, these requirements also will be applied for non-player clans", RequireRestart = false, Order = 160)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public bool IsAplyForNonPlayerClan
+        public bool IsAplyClanTiersToNonPlayer
         {
             get
             {
