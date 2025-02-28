@@ -66,6 +66,15 @@ namespace ClanRenounTweak.Models
 
     class RenounTweakClanTierModel : DefaultClanTierModel
     {
+        public void RecalculateClanTiers()
+        {
+            float almostZero = 0.00001f;
+            foreach (var clan in Clan.All)
+            {
+                clan.AddRenown(almostZero);
+            }
+        }
+
         public override int CalculateInitialRenown(Clan clan)
         {
             var renounTweakSettings = ClanRenounTweakSettings.Instance;
