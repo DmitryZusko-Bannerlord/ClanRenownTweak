@@ -7,8 +7,8 @@
     <ProjectGuid>{B553354A-2FAF-4B14-9B8D-6ABC78E6B023}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClanRenounTweak</RootNamespace>
-    <AssemblyName>ClanRenounTweak</AssemblyName>
+    <RootNamespace>ClanRenownTweak</RootNamespace>
+    <AssemblyName>ClanRenownTweak</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>E:\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\ClanRenounTweak\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>E:\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\ClanRenownTweak\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>E:\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\ClanRenounTweak\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>E:\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\Modules\ClanRenownTweak\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -255,8 +255,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatches\Clan\AddRenownPatch.cs" />
-    <Compile Include="MCM\ClanRenounTweakSettings.cs" />
-    <Compile Include="Models\RenounTweakClanTierModel.cs" />
+    <Compile Include="MCM\ClanRenownTweakSettings.cs" />
+    <Compile Include="Models\RenownTweakClanTierModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubModule.cs" />
   </ItemGroup>

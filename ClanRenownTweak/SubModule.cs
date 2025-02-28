@@ -1,17 +1,17 @@
-﻿using ClanRenounTweak.MCM;
-using ClanRenounTweak.Models;
+﻿using ClanRenownTweak.MCM;
+using ClanRenownTweak.Models;
 using HarmonyLib;
 using System;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using static ClanRenounTweak.MCM.ClanRenounTweakSettings;
+using static ClanRenownTweak.MCM.ClanRenownTweakSettings;
 
-namespace ClanRenounTweak
+namespace ClanRenownTweak
 {
     class SubModule : MBSubModuleBase
     {
-        private readonly static string _harmonyId = "com.goodhunter.clanrenountweak";
+        private readonly static string _harmonyId = "com.goodhunter.clanrenowntweak";
         private Action _test;
 
         protected override void OnSubModuleLoad()
@@ -32,7 +32,7 @@ namespace ClanRenounTweak
 
         protected virtual void RegisterModels(IGameStarter gameStarterObject)
         {
-            var tweakedClanTierModel = new RenounTweakClanTierModel();
+            var tweakedClanTierModel = new RenownTweakClanTierModel();
             _test = tweakedClanTierModel.RecalculateClanTiers;
 
             gameStarterObject.AddModel(tweakedClanTierModel);
@@ -42,7 +42,7 @@ namespace ClanRenounTweak
         {
             base.OnAfterGameInitializationFinished(game, starterObject);
 
-            ClanRenounTweakSettings.Instance.ClanTierRelatedSettingsChanged += new ClanTierRelatedSettingsChangedHandler(_test);
+            ClanRenownTweakSettings.Instance.ClanTierRelatedSettingsChanged += new ClanTierRelatedSettingsChangedHandler(_test);
         }
     }
 }

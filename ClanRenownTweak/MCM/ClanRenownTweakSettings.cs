@@ -3,33 +3,33 @@ using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Base.PerCampaign;
 using System.Runtime.CompilerServices;
 
-namespace ClanRenounTweak.MCM
+namespace ClanRenownTweak.MCM
 {
-    class ClanRenounTweakSettings : AttributePerCampaignSettings<ClanRenounTweakSettings>
+    class ClanRenownTweakSettings : AttributePerCampaignSettings<ClanRenownTweakSettings>
     {
         private bool _isClanRelatedSettingChanged = false;
 
         private bool _IsAplyForNonPlayerClan = false;
 
-        public override string Id => "ClanRenounTweak";
+        public override string Id => "ClanRenownTweak";
 
-        public override string DisplayName => "Clan Renoun Tweak";
+        public override string DisplayName => "Clan Renown Tweak";
 
-        [SettingPropertyFloatingInteger("Renoun gain multiplier", 0.001f, 1000, "0%",
-            HintText = "Multiplying coef for renoun gains from all sources (def = 100%)", RequireRestart = false, Order = 10)]
-        [SettingPropertyGroup("Renoun gain multiplier", GroupOrder = 1)]
-        public float RenounMultiplier { get; set; } = 1;
+        [SettingPropertyFloatingInteger("Renown gain multiplier", 0.001f, 1000, "0%",
+            HintText = "Multiplying coef for renown gains from all sources (def = 100%)", RequireRestart = false, Order = 10)]
+        [SettingPropertyGroup("Renown gain multiplier", GroupOrder = 1)]
+        public float RenownMultiplier { get; set; } = 1;
 
         [SettingPropertyBool("Apply to non-player characters",
             HintText = "If checked, this multiplier also will be applied to all future renown gains of non-player characters",
             RequireRestart = false, Order = 20)]
-        [SettingPropertyGroup("Renoun gain multiplier", GroupOrder = 1)]
-        public bool IsApplyRenounMultiplierToNonPlayer { get; set; } = false;
+        [SettingPropertyGroup("Renown gain multiplier", GroupOrder = 1)]
+        public bool IsApplyRenownMultiplierToNonPlayer { get; set; } = false;
 
-        [SettingPropertyInteger("1 tier renoun", 1, 1000000, "0",
-            HintText = "Amount of renoun to be aquired to reach clan tier level 1 (def = 50)", RequireRestart = false, Order = 100)]
+        [SettingPropertyInteger("1 tier renown", 1, 1000000, "0",
+            HintText = "Amount of renown to be aquired to reach clan tier level 1 (def = 50)", RequireRestart = false, Order = 100)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public int ClanRenounLevelOne
+        public int ClanRenownLevelOne
         {
             get
             {
@@ -42,10 +42,10 @@ namespace ClanRenounTweak.MCM
             }
         }
 
-        [SettingPropertyInteger("2 tier renoun", 1, 1000000, "0",
-            HintText = "Amount of renoun to be aquired to reach clan tier level 2 (def = 150)", RequireRestart = false, Order = 110)]
+        [SettingPropertyInteger("2 tier renown", 1, 1000000, "0",
+            HintText = "Amount of renown to be aquired to reach clan tier level 2 (def = 150)", RequireRestart = false, Order = 110)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public int ClanRenounLevelTwo
+        public int ClanRenownLevelTwo
         {
             get
             {
@@ -58,10 +58,10 @@ namespace ClanRenounTweak.MCM
             }
         }
 
-        [SettingPropertyInteger("3 tier renoun", 1, 1000000, "0",
-            HintText = "Amount of renoun to be aquired to reach clan tier level 3 (def = 350)", RequireRestart = false, Order = 120)]
+        [SettingPropertyInteger("3 tier renown", 1, 1000000, "0",
+            HintText = "Amount of renown to be aquired to reach clan tier level 3 (def = 350)", RequireRestart = false, Order = 120)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public int ClanRenounLevelThree
+        public int ClanRenownLevelThree
         {
             get
             {
@@ -74,10 +74,10 @@ namespace ClanRenounTweak.MCM
             }
         }
 
-        [SettingPropertyInteger("4 tier renoun", 1, 1000000, "0",
-            HintText = "Amount of renoun to be aquired to reach clan tier level 4 (def = 900)", RequireRestart = false, Order = 130)]
+        [SettingPropertyInteger("4 tier renown", 1, 1000000, "0",
+            HintText = "Amount of renown to be aquired to reach clan tier level 4 (def = 900)", RequireRestart = false, Order = 130)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public int ClanRenounLevelFour
+        public int ClanRenownLevelFour
         {
             get
             {
@@ -90,10 +90,10 @@ namespace ClanRenounTweak.MCM
             }
         }
 
-        [SettingPropertyInteger("5 tier renoun", 1, 1000000, "0",
-            HintText = "Amount of renoun to be aquired to reach clan tier level 5 (def = 2350)", RequireRestart = false, Order = 140)]
+        [SettingPropertyInteger("5 tier renown", 1, 1000000, "0",
+            HintText = "Amount of renown to be aquired to reach clan tier level 5 (def = 2350)", RequireRestart = false, Order = 140)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public int ClanRenounLevelFive
+        public int ClanRenownLevelFive
         {
             get
             {
@@ -106,10 +106,10 @@ namespace ClanRenounTweak.MCM
             }
         }
 
-        [SettingPropertyInteger("6 tier renoun", 1, 1000000, "0",
-            HintText = "Amount of renoun to be aquired to reach clan tier level 6 (def = 6150)", RequireRestart = false, Order = 150)]
+        [SettingPropertyInteger("6 tier renown", 1, 1000000, "0",
+            HintText = "Amount of renown to be aquired to reach clan tier level 6 (def = 6150)", RequireRestart = false, Order = 150)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public int ClanRenounLevelSix
+        public int ClanRenownLevelSix
         {
             get
             {
@@ -146,7 +146,7 @@ namespace ClanRenounTweak.MCM
 
         public event ClanTierRelatedSettingsChangedHandler ClanTierRelatedSettingsChanged;
 
-        public ClanRenounTweakSettings()
+        public ClanRenownTweakSettings()
         {
             DefaultTierLowerRenownLimits.CopyTo(TweakedTierLowerRenownLimits, 0);
         }
