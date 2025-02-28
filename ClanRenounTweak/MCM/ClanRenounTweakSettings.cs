@@ -1,11 +1,16 @@
 ﻿using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Base.PerCampaign;
+using System.Runtime.CompilerServices;
 
 namespace ClanRenounTweak.MCM
 {
     class ClanRenounTweakSettings : AttributePerCampaignSettings<ClanRenounTweakSettings>
     {
+        private bool _isClanRelatedSettingChanged = false;
+
+        private bool _IsAplyForNonPlayerClan = false;
+
         public override string Id => "ClanRenounTweak";
 
         public override string DisplayName => "Clan Renoun Tweak";
@@ -27,6 +32,7 @@ namespace ClanRenounTweak.MCM
             set
             {
                 TweakedTierLowerRenownLimits[1] = value;
+                _isClanRelatedSettingChanged = true;
             }
         }
 
@@ -42,6 +48,7 @@ namespace ClanRenounTweak.MCM
             set
             {
                 TweakedTierLowerRenownLimits[2] = value;
+                _isClanRelatedSettingChanged = true;
             }
         }
 
@@ -57,6 +64,7 @@ namespace ClanRenounTweak.MCM
             set
             {
                 TweakedTierLowerRenownLimits[3] = value;
+                _isClanRelatedSettingChanged = true;
             }
         }
 
@@ -72,6 +80,7 @@ namespace ClanRenounTweak.MCM
             set
             {
                 TweakedTierLowerRenownLimits[4] = value;
+                _isClanRelatedSettingChanged = true;
             }
         }
 
@@ -87,6 +96,7 @@ namespace ClanRenounTweak.MCM
             set
             {
                 TweakedTierLowerRenownLimits[5] = value;
+                _isClanRelatedSettingChanged = true;
             }
         }
 
@@ -102,20 +112,47 @@ namespace ClanRenounTweak.MCM
             set
             {
                 TweakedTierLowerRenownLimits[6] = value;
+                _isClanRelatedSettingChanged = true;
             }
         }
 
         [SettingPropertyBool("Apply to non-player clans",
             HintText = "If checked, these requirements also will be applied for non-player clans", RequireRestart = false, Order = 160)]
         [SettingPropertyGroup("Clan tiers", GroupOrder = 2)]
-        public bool IsAplyForNonPlayerClan { get; set; } = false;
+        public bool IsAplyForNonPlayerClan
+        {
+            get
+            {
+                return _IsAplyForNonPlayerClan;
+            }
+            set
+            {
+                _IsAplyForNonPlayerClan = value;
+                _isClanRelatedSettingChanged = true;
+            }
+        }
 
         public int[] DefaultTierLowerRenownLimits = new int[] { 0, 50, 150, 350, 900, 2350, 6150 };
+
         public int[] TweakedTierLowerRenownLimits = new int[7];
+
+        public delegate void ClanTierRelatedSettingsChangedHandler();
+
+        public event ClanTierRelatedSettingsChangedHandler ClanTierRelatedSettingsChanged;
 
         public ClanRenounTweakSettings()
         {
             DefaultTierLowerRenownLimits.CopyTo(TweakedTierLowerRenownLimits, 0);
+        }
+
+        public override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            if (!_isClanRelatedSettingChanged) return;
+
+            ClanTierRelatedSettingsChanged?.Invoke();
+            _isClanRelatedSettingChanged = false;
         }
     }
 }
