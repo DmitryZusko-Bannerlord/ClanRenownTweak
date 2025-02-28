@@ -5,7 +5,13 @@ using TaleWorlds.Core;
 
 namespace ClanRenounTweak.Models
 {
-    class RenounTweakClanTierModel : DefaultClanTierModel
+    public interface IRenounTweakClanTierModel
+    {
+        void RecalculateClanTiers();
+        float TweakGainedRenounValue(float value, Clan clan);
+    }
+
+    class RenounTweakClanTierModel : DefaultClanTierModel, IRenounTweakClanTierModel
     {
         public void RecalculateClanTiers()
         {
@@ -16,10 +22,21 @@ namespace ClanRenounTweak.Models
             }
         }
 
+        public virtual float TweakGainedRenounValue(float value, Clan clan)
+        {
+            var tweakSettings = ClanRenounTweakSettings.Instance;
+            if (tweakSettings == null || (!tweakSettings.IsAplyClanTiersToNonPlayer && clan.Id != Clan.PlayerClan.Id))
+                return value;
+
+            return value * tweakSettings.RenounMultiplier;
+        }
+
         public override int CalculateInitialRenown(Clan clan)
         {
             var renounTweakSettings = ClanRenounTweakSettings.Instance;
-            var tierLowerRenownLimits = clan.Id == Clan.PlayerClan.Id || renounTweakSettings.IsAplyForNonPlayerClan
+            if (renounTweakSettings == null) return base.CalculateInitialRenown(clan);
+
+            var tierLowerRenownLimits = clan.Id == Clan.PlayerClan.Id || renounTweakSettings.IsAplyClanTiersToNonPlayer
                 ? renounTweakSettings.TweakedTierLowerRenownLimits
                 : renounTweakSettings.DefaultTierLowerRenownLimits;
 
@@ -32,7 +49,9 @@ namespace ClanRenounTweak.Models
         public override int CalculateTier(Clan clan)
         {
             var renounTweakSettings = ClanRenounTweakSettings.Instance;
-            var tierLowerRenownLimits = clan.Id == Clan.PlayerClan.Id || renounTweakSettings.IsAplyForNonPlayerClan
+            if (renounTweakSettings == null) return base.CalculateTier(clan);
+
+            var tierLowerRenownLimits = clan.Id == Clan.PlayerClan.Id || renounTweakSettings.IsAplyClanTiersToNonPlayer
                 ? renounTweakSettings.TweakedTierLowerRenownLimits
                 : renounTweakSettings.DefaultTierLowerRenownLimits;
 
@@ -50,9 +69,9 @@ namespace ClanRenounTweak.Models
 
         public override int GetRequiredRenownForTier(int tier)
         {
-            var tweakedTierLowerRenownLimits = ClanRenounTweakSettings.Instance.TweakedTierLowerRenownLimits;
+            if (ClanRenounTweakSettings.Instance == null) return base.GetRequiredRenownForTier(tier);
 
-            return tweakedTierLowerRenownLimits[tier];
+            return ClanRenounTweakSettings.Instance.TweakedTierLowerRenownLimits[tier];
         }
     }
 }
