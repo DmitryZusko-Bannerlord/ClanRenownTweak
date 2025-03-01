@@ -2,7 +2,11 @@
 
 ## $${\color{#bb7700}Installation}$$
 
-Simply extract archive into Mount & Blade II Bannerlord\Modules folder.
+Simply extract archive into
+
+```
+Mount & Blade II Bannerlord\Modules folder.
+```
 
 ## $${\color{#bb7700}Settings}$$
 
@@ -12,7 +16,10 @@ Mod allows you to change renown requierements for each clan tier level. These se
 
 Mod allows you to add renown gain muliplier, so you will receive more or less renown from every source.
 Bare in mind, mod alters the amount, that being added to clan, not the original value. So, when renown being gained, player will see original values, that are beign altered under the hood.
-For example, if you set renown multiplier = 200%, and after a battle game shown you a gain of +8.0 renown, that means your clan will receive 8 \* 2 = 16 renown.
+For example, if you set renown multiplier = 200%, and after a battle game shown you a gain of +8.0 renown, that means your clan will receive
+
+> 8 \* 2 = 16 renown.
+
 These settings can be apllied only for player or for every clan.
 
 After saving changes in settings, mod re-calculates tiers for clans.
