@@ -2,10 +2,10 @@
 
 ## $${\color{#bb7700}Installation}$$
 
-Simply extract archive into
+Simply extract archive into folder:
 
 ```
-Mount & Blade II Bannerlord\Modules folder.
+Mount & Blade II Bannerlord\Modules
 ```
 
 ## $${\color{#bb7700}Settings}$$
