@@ -12,14 +12,17 @@ namespace ClanRenownTweak.HarmonyPatches
             var tweakedClanTierModel = Campaign.Current.Models.ClanTierModel as IRenownTweakClanTierModel;
             value = tweakedClanTierModel.TweakGainedRenownValue(value, __instance);
 
-            if (value > 0f)
-            {
-                __instance.Renown += value;
-                int num = Campaign.Current.Models.ClanTierModel.CalculateTier(__instance);
+            if (value < 0f) return false;
 
-                ____tier = num;
+            __instance.Renown += value;
+            int newTier = Campaign.Current.Models.ClanTierModel.CalculateTier(__instance);
+
+            if (newTier != ____tier)
+            {
+                ____tier = newTier;
                 CampaignEventDispatcher.Instance.OnClanTierChanged(__instance, shouldNotify);
             }
+
 
             return false;
         }
